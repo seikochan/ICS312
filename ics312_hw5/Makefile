@@ -3,8 +3,8 @@
 # make run2: will run the second program
 # make clean: will remove all object and executable files
 
-PROGRAM1=ics312_sample
-PROGRAM2=ics312_test
+PROGRAM1=hw5_ex1
+PROGRAM2=hw5_ex2
 CC=gcc
 CFLAGS=-m32
 ASM=nasm
@@ -38,3 +38,4 @@ driver.o: driver.c
 
 clean:
 	/bin/rm -f *.o $(PROGRAM1) $(PROGRAM2)
+
