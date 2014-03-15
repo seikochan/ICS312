@@ -36,11 +36,6 @@ asm_main:
   for:							; for int counter=0, counter<50, i++
   	cmp 	byte [counter], 50d ; compare counter to 50
   	jge		forEndBlock			; counter >= 50 therefore get out of for loop
- ;movsx 	eax, byte [counter]
- ;inc eax
- ;call 	print_nl	
- ;call 	print_int
-
  	cmp 	byte [userInt], 0d  ; user entered a 0, so skip it, no number can divide by 0
  	je 		forEndBlock 
 
@@ -55,12 +50,8 @@ asm_main:
 	mov 	ebx, divisorArr
 	add 	ebx, ecx
 	inc 	dword [ebx]
-;mov 	eax, increment
-;call 	print_string
-;mov 	eax, [ebx]
-;call 	print_int
 
-      notDivisible:				; not divisible so skip incrementing variable
+  notDivisible:					; not divisible so skip incrementing variable
     inc 	byte [counter]		; increment counter to the next divisor
     jmp		for					; start for loop over
 
@@ -77,27 +68,24 @@ asm_main:
   	jge		endBlock			; counter >= 50 therefore get out of for loop
 	mov		eax, divByStr1		; print divisible by string
 	call	print_string
-	movsx 	eax, byte [counter]
-	inc 	eax
+	movsx 	eax, byte [counter]	; print the counter
+	inc 	eax 				; need to increment it since it is 1 less than the actual divisor numbers
 	call 	print_int
-	mov 	eax, divByStr2
+	mov 	eax, divByStr2		; print second part of divisible by string
 	call	print_string
-	mov 	eax, 0d
-	mov 	ebx, 0d
-	mov 	ecx, 0d
+	mov 	eax, 0d 			; clear eax
+	mov 	ebx, 0d 			; clear ebx
+	mov 	ecx, 0d 			; clear ecx
 	imul 	ecx, [counter], 4d	; calculate offset from beginning of array
-	mov 	eax, divisorArr
-	add 	eax, ecx
-	mov 	eax, [eax]
+	mov 	eax, divisorArr 	; create a pointer to beginning of array
+	add 	eax, ecx  			; offset array to current index
+	mov 	eax, [eax] 			; print the value at the index in the divisorArr
 	call	print_int
 	call	print_nl
 	inc 	byte [counter]
 	jmp		for2
   
-
   endBlock:
-
-
 
 	popa						; cleanup
 	mov	eax, 0					; cleanup
