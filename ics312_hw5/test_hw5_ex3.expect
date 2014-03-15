@@ -1,0 +1,14 @@
+#!/usr/bin/expect
+
+set timeout 20
+
+spawn "./hw5_ex3"
+
+expect "Enter an integer: " { send "1\r" }
+expect "Enter an integer: " { send "2\r" }
+expect "Enter an integer: " { send "3\r" }
+expect "Enter an integer: " { send "4\r" }
+expect "Enter an integer: " { send -- "-1\r" }
+
+interact
+

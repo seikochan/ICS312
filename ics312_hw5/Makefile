@@ -41,6 +41,12 @@ $(PROGRAM2).o: $(PROGRAM2).asm
 $(PROGRAM3).o: $(PROGRAM3).asm
 	$(ASM) $(ASMFLAGS) $(PROGRAM3).asm -o $(PROGRAM3).o
 
+test3: $(PROGRAM3) test_hw5_ex3.expect
+	./test_hw5_ex3.expect
+
+test3b: $(PROGRAM3) test_hw5_ex3b.expect
+	./test_hw5_ex3b.expect
+
 asm_io.o: asm_io.asm
 	$(ASM) $(ASMFLAGS) -d ELF_TYPE asm_io.asm -o asm_io.o
 
